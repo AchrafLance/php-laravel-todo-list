@@ -7,11 +7,15 @@ import { TodoService } from 'src/app/services/todo.service';
   styleUrls: ['./add-todo.component.css']
 })
 export class AddTodoComponent implements OnInit {
-  description: string; 
+  description : string; 
+  id:number;  
+  checked: boolean; 
+  todo: any; 
   updateDisabled: boolean = true; 
   addDisabled: boolean = false; 
   constructor(private todoService:TodoService) {
    }
+
 
   ngOnInit(): void {
   }
@@ -25,11 +29,20 @@ export class AddTodoComponent implements OnInit {
   }
   
   updateTodo(){
-    let todo = {
-      "description": this.description,
-      "checked": false
-    };
-    this.todoService.addTodo(todo); 
+    this.updateDisabled = !this.updateDisabled; 
+    this.addDisabled = !this.addDisabled;
+    this.todo.description = this.description; 
+    this.todoService.updateTodo(this.todo); 
+
+  
+  }
+
+  receiveTodo(event){
+   this.todo = event;
+   console.log(this.todo)
+   this.description = event.description; 
+    this.updateDisabled = !this.updateDisabled; 
+    this.addDisabled = !this.addDisabled;
   }
 
 

@@ -4,3 +4,4 @@
     <button type="submit" [ngClass] = "updateDisabled ? 'disabled' : '' " class="updateButton" (click)="updateTodo()" [disabled]="updateDisabled">Update</button>
     <button type="submit" [ngClass]="addDisabled ? 'disabled' : '' " class="addButton" (click)="addTodo()" [disabled]="addDisabled">Add</button>
 </div>
+<app-todo-item (eventEmiter)="receiveTodo($event)"></app-todo-item>

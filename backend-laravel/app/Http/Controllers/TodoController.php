@@ -28,8 +28,9 @@ class TodoController extends Controller
         $todo->description = $request['description']; 
         $todo->checked = $request['checked']; 
         $todo->save(); 
+        return $todo; 
     }
-    
+
     public function destroy($id){
         return Todo::destroy($id); 
     }

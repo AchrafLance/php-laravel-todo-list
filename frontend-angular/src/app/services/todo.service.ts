@@ -7,7 +7,7 @@ import { RequestService } from './request.service';
 export class TodoService {
 
   todoList: any;
-  description; 
+  description: string; 
   updateDisabled: boolean = true; 
   addDisabled: boolean = false; 
   constructor(private requestService: RequestService) { }
@@ -28,11 +28,20 @@ export class TodoService {
         this.todoList.push(res);
       }
     });
-
   }
 
   //update todo
   updateTodo(item) {
+    this.requestService.updateObject(item).subscribe(res => {
+      console.log("RES = " + res); 
+      if(res){
+        const index = this.todoList.indexOf(item);
+        console.log(index);  
+        if(index !== -1){
+          this.todoList[index] = res; 
+        }
+      }
+    })
   }
 
   //delete todo

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { TodoService } from '../../services/todo.service';
 
 @Component({
@@ -9,17 +9,21 @@ import { TodoService } from '../../services/todo.service';
 export class TodoItemComponent implements OnInit {
   todoList : any; 
   isChecked : boolean; 
+  @Output() eventEmiter = new EventEmitter<any>(); 
   constructor(private todoService:TodoService) { }
 
   ngOnInit(): void {
     this.todoService.getTodos().then(res =>{
-      this.todoList = this.todoService.todoList;
+      if(res !== null){
+        this.todoList = this.todoService.todoList;
+      }
     });
     
     } 
     
   onToggle(todo){
     todo.checked = !todo.checked;
+    this.todoService.updateTodo(todo); 
   }
 
   deleteTodo(todo){
@@ -27,9 +31,8 @@ export class TodoItemComponent implements OnInit {
   }
 
   updateTodo(todo){
-    this.todoService.description = todo.description; 
-    this.todoService.updateDisabled = false; 
-    this.todoService.addDisabled = true; 
+    this.eventEmiter.emit(todo); 
+   
 
   }
 

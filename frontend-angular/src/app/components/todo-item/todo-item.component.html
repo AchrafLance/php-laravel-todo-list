@@ -1,6 +1,6 @@
 <div *ngFor="let todo of todoList" class="todo-item" [data-id]="todo.id">
     <input type="checkbox" (change)="onToggle(todo)" [checked]="todo.checked">
     <span [ngClass]="todo.checked ? 'checked' :''">{{todo.description}}</span>
-    <button (click)="deleteTodo(todo)">delete</button>
-    <button (click)= "updateTodo(todo)">edit</button>
+    <button (click)="deleteTodo(todo)">delete <i class="fas fa-trash-alt"></i></button>
+    <button (click)= "updateTodo(todo)">edit <i class="far fa-edit"></i></button>
 </div>

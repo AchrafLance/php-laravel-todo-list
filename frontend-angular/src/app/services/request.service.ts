@@ -30,7 +30,11 @@ export class RequestService {
     return this.http.post(url, body, { headers: this.headers });
   }
 
-  updateObject(){
+  updateObject(post){
+    let body = JSON.stringify(post); 
+    let url = this.hostURL + `/todo/${post.id}`
+    return this.http.patch(url, body, {headers:this.headers}); 
+
 
   }
 
