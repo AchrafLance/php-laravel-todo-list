@@ -1,0 +1,29 @@
+.add-todo input{
+    width:86%; 
+    padding:10px;
+}
+
+.addButton{
+    float: right;
+    background-color: green;
+    color:white;
+    width: 7%;
+    padding: 12px; 
+    border:none; 
+    cursor: pointer;
+}
+
+.updateButton{
+    float: right;
+    background-color: blue;
+    color:white;
+    width: 7%;
+    padding: 12px;
+    border:none; 
+    cursor: pointer;
+}
+
+.disabled{
+    background-color: rgb(189, 186, 186);
+    color:black;
+}

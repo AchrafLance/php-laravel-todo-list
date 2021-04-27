@@ -1,0 +1,6 @@
+<div class="add-todo">
+    <label for="addTodo"></label>
+    <input type="text" placeholder="add/update items.." [(ngModel)]="description">
+    <button type="submit" [ngClass] = "updateDisabled ? 'disabled' : '' " class="updateButton" (click)="updateTodo()" [disabled]="updateDisabled">Update</button>
+    <button type="submit" [ngClass]="addDisabled ? 'disabled' : '' " class="addButton" (click)="addTodo()" [disabled]="addDisabled">Add</button>
+</div>
